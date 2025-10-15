@@ -1,5 +1,5 @@
 flutter_native_splash:
   image: "assets/png/splashImage.png"
-  color: "#42a5f5"
+  color: "#ffffff"
   ios: true
  
