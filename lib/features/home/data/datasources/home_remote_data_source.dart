@@ -1,5 +1,4 @@
 import 'package:animal_task/core/constants/api_endpoints.dart';
-import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/data/models/cat_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
@@ -17,6 +16,5 @@ abstract class HomeApiService {
     @Query('has_breeds') bool hasBreeds = true,
   });
 
-  @POST(ApiEndpoints.favorites)
-  Future<void> addFavorite({@Body() required AddToFavoriteModel body});
 }
+

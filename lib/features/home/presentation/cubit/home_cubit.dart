@@ -1,3 +1,4 @@
+import 'package:animal_task/core/common/domain/repositories/favorite_repository.dart';
 import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/domain/entities/cat_entity.dart';
 import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
@@ -6,8 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepository catRepository;
-  HomeCubit(this.catRepository) : super(HomeInitState());
+  final FavoriteRepository favoriteRepository;
+  HomeCubit(this.catRepository, this.favoriteRepository) : super(HomeInitState());
+
   List<Cat> _cats = [];
+  List<String> _favoriteIds = [];
+
   void getAllCats() async {
     emit(HomeLoadingState());
     try {
@@ -39,14 +44,32 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> addFavorite({required AddToFavoriteModel body}) async {
     emit(AddFavoriteLoadingState());
     try {
-      final response = await catRepository.addFavorite(body: body);
-      response.fold((error) => emit(AddFavoriteErrorState(error.message)), (
-        success,
-      ) {
+      final response = await favoriteRepository.addFavorite(body: body);
+      response.fold((error) => emit(AddFavoriteErrorState(error.message)), (success) {
+        _favoriteIds.add(body.imageId);
         emit(AddFavoriteSuccessState());
       });
     } on Exception catch (_) {
       emit(AddFavoriteErrorState('Something went wrong'));
     }
   }
+
+  Future<void> loadFavorites() async {
+    emit(HomeLoadingState());
+    try {
+      final response = await favoriteRepository.getFavorites();
+      response.fold((error) => emit(HomeErrorState(error.message)), (success) {
+        _favoriteIds = success.map((fav) => fav.imageId).toList();
+        emit(HomeSuccessState(_cats));
+      });
+    } on Exception catch (_) {
+      emit(HomeErrorState('Something went wrong'));
+    }
+  }
+
+  bool isFavorite(String imageId) {
+    return _favoriteIds.contains(imageId);
+  }
+
+
 }
