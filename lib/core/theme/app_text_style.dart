@@ -6,12 +6,18 @@ class AppTextStyle {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w700,
     fontSize: 24,
-    color: AppColors.textColor,
+    color: AppColors.text,
   );
   static TextStyle poppins400Regular14 = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppColors.greyColor,
+    color: AppColors.text,
+  );
+  static TextStyle poppins500Medium14 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    color: AppColors.text,
   );
 }
