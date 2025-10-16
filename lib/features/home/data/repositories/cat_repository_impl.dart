@@ -16,10 +16,8 @@ class CatRepositoryImpl implements CatRepository {
     try {
       final catModels = await remoteDataSource.getCats();
       final cats = catModels.map((cats) => CatMapper.toEntity(cats)).toList();
-
       return Right(cats);
     } catch (e) {
-      print(e.toString());
       return Left(HandledException.handle(e));
     }
   }
