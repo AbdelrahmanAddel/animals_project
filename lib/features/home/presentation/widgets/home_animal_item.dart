@@ -14,6 +14,8 @@ class HomeAnimalItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeCubit = context.watch<HomeCubit>();
+    final isFavorite = homeCubit.isFavorite(cat.id);
     return Container(
       width: 343,
       height: 124,
@@ -68,11 +70,17 @@ class HomeAnimalItem extends StatelessWidget {
               alignment: Alignment.topRight,
               child: GestureDetector(
                 onTap: () async {
-                  await context.read<HomeCubit>().addFavorite(
+                  await homeCubit.addFavorite(
                     body: AddToFavoriteModel(id: cat.id, imageId: cat.imageId),
                   );
                 },
-                child: SvgPicture.asset(images.svgHeart),
+                child: SvgPicture.asset(
+                  images.svgHeart,
+                  colorFilter: ColorFilter.mode(
+                    isFavorite ? Colors.red : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
             ),
           ],

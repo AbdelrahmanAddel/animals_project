@@ -12,7 +12,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocProvider(
-        create: (context) => sl<HomeCubit>()..getAllCats(),
+        create: (context) => sl<HomeCubit>()
+          ..getAllCats()
+          ..loadFavorites(),
         child: HomeBody(),
       ),
     );
