@@ -15,3 +15,15 @@ final class HomeErrorState extends HomeState {
   final String message;
   HomeErrorState(this.message);
 }
+
+final class SearchSuccessState extends HomeState {
+  final List<Cat> cats;
+
+  SearchSuccessState({required this.cats});
+}
+
+final class SearchFailureState extends HomeState {
+  final String message;
+
+  SearchFailureState({required this.message});
+}

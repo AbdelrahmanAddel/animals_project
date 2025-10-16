@@ -15,7 +15,9 @@ class AnimalsList extends StatelessWidget {
       buildWhen: (previous, current) {
         return current is HomeLoadingState ||
             current is HomeErrorState ||
-            current is HomeSuccessState;
+            current is HomeSuccessState ||
+            current is SearchSuccessState ||
+            current is SearchFailureState;
       },
       builder: (context, state) {
         switch (state) {
@@ -33,8 +35,23 @@ class AnimalsList extends StatelessWidget {
                 return SizedBox(height: 12);
               },
             );
-          case HomeErrorState():
-            return ErrorStateWidget(message: state.message);
+          case SearchSuccessState():
+            return ListView.separated(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: state.cats.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return HomeAnimalItem(cat: state.cats[index]);
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(height: 12);
+              },
+            );
+
+          case HomeErrorState() || SearchFailureState():
+            return ErrorStateWidget(
+              message: 'Something went wrong , try again',
+            );
           default:
             return SizedBox.shrink();
         }
