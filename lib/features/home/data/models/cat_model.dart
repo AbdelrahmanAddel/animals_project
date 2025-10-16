@@ -5,20 +5,21 @@ part 'cat_model.g.dart';
 @JsonSerializable()
 class CatModel {
   final List<Breed>? breeds;
-  final String id;
-  final String url;
-  final int width;
-  final int height;
+  final String? id;
+  final String? url;
+  final int? width;
+  final int? height;
 
   const CatModel({
-    this.breeds,
+    required this.breeds,
     required this.id,
     required this.url,
     required this.width,
     required this.height,
   });
 
-  factory CatModel.fromJson(Map<String, dynamic> json) => _$CatModelFromJson(json);
+  factory CatModel.fromJson(Map<String, dynamic> json) =>
+      _$CatModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CatModelToJson(this);
 }
@@ -26,56 +27,56 @@ class CatModel {
 @JsonSerializable()
 class Breed {
   final Weight? weight;
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   @JsonKey(name: 'cfa_url')
   final String? cfaUrl;
   @JsonKey(name: 'vetstreet_url')
   final String? vetstreetUrl;
   @JsonKey(name: 'vcahospitals_url')
   final String? vcahospitalsUrl;
-  final String temperament;
-  final String origin;
+  final String? temperament;
+  final String? origin;
   @JsonKey(name: 'country_codes')
   final String? countryCodes;
   @JsonKey(name: 'country_code')
   final String? countryCode;
-  final String description;
+  final String? description;
   @JsonKey(name: 'life_span')
-  final String lifeSpan;
-  final int indoor;
-  final int lap;
+  final String? lifeSpan;
+  final int? indoor;
+  final int? lap;
   @JsonKey(name: 'alt_names')
   final String? altNames;
-  final int adaptability;
+  final int? adaptability;
   @JsonKey(name: 'affection_level')
-  final int affectionLevel;
+  final int? affectionLevel;
   @JsonKey(name: 'child_friendly')
-  final int childFriendly;
+  final int? childFriendly;
   @JsonKey(name: 'dog_friendly')
-  final int dogFriendly;
+  final int? dogFriendly;
   @JsonKey(name: 'energy_level')
-  final int energyLevel;
-  final int grooming;
+  final int? energyLevel;
+  final int? grooming;
   @JsonKey(name: 'health_issues')
-  final int healthIssues;
-  final int intelligence;
+  final int? healthIssues;
+  final int? intelligence;
   @JsonKey(name: 'shedding_level')
-  final int sheddingLevel;
+  final int? sheddingLevel;
   @JsonKey(name: 'social_needs')
-  final int socialNeeds;
+  final int? socialNeeds;
   @JsonKey(name: 'stranger_friendly')
-  final int strangerFriendly;
-  final int vocalisation;
-  final int experimental;
-  final int hairless;
-  final int natural;
-  final int rare;
-  final int rex;
+  final int? strangerFriendly;
+  final int? vocalisation;
+  final int? experimental;
+  final int? hairless;
+  final int? natural;
+  final int? rare;
+  final int? rex;
   @JsonKey(name: 'suppressed_tail')
-  final int suppressedTail;
+  final int? suppressedTail;
   @JsonKey(name: 'short_legs')
-  final int shortLegs;
+  final int? shortLegs;
   @JsonKey(name: 'wikipedia_url')
   final String? wikipediaUrl;
   final int hypoallergenic;
@@ -129,13 +130,10 @@ class Breed {
 
 @JsonSerializable()
 class Weight {
-  final String imperial;
-  final String metric;
+  final String? imperial;
+  final String? metric;
 
-  const Weight({
-    required this.imperial,
-    required this.metric,
-  });
+  const Weight({required this.imperial, required this.metric});
 
   factory Weight.fromJson(Map<String, dynamic> json) => _$WeightFromJson(json);
 

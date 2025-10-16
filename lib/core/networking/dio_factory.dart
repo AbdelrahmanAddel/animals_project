@@ -12,6 +12,9 @@ class DioFactory {
       dio!.options.baseUrl = ApiEndpoints.baseUrl;
       dio!.options.connectTimeout = const Duration(seconds: 60);
       dio!.options.receiveTimeout = const Duration(seconds: 60);
+      dio!.options.headers = {
+        'x-api-key': 'live_NnRC9jLCzqJyRv5nJgApkjqHrVvW5kcrPaXyKbzQRVuagZzL5Sgo4E7IlYLGSgGF',
+      };
       _dioPrettyLogger();
     }
     return dio!;

@@ -1,5 +1,6 @@
 import 'package:animal_task/features/home/data/repositories/cat_repository_impl.dart';
 import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
+import 'package:animal_task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 
 import '../../core/networking/cat_api_service.dart';
@@ -19,4 +20,6 @@ void _home(Dio dio) {
   sl.registerLazySingleton<CatRepository>(
     () => CatRepositoryImpl(remoteDataSource: sl()),
   );
+
+  sl.registerLazySingleton(() => HomeCubit(sl()));
 }

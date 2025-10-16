@@ -1,8 +1,10 @@
+import 'package:animal_task/features/home/dependency_injection.dart';
 import 'package:animal_task/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'features/onboarding/presentation/screen/onboarding_screen.dart';
 
-void main() {
+void main() async {
+  setupServiceLocator();
   runApp(AnimalApp());
 }
 
