@@ -1,3 +1,4 @@
+import 'package:animal_task/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'features/onboarding/presentation/screen/onboarding_screen.dart';
 
@@ -10,6 +11,6 @@ class AnimalApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: OnboardingScreen());
+    return const MaterialApp(home: HomeScreen());
   }
 }
