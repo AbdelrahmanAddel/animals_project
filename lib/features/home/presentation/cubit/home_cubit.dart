@@ -1,10 +1,11 @@
+import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/domain/entities/cat_entity.dart';
 import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
 import 'package:animal_task/features/home/presentation/cubit/home_state.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final CatRepository catRepository;
+  final HomeRepository catRepository;
   HomeCubit(this.catRepository) : super(HomeInitState());
   List<Cat> _cats = [];
   void getAllCats() async {
@@ -32,6 +33,20 @@ class HomeCubit extends Cubit<HomeState> {
       emit(SearchSuccessState(cats: response));
     } on Exception catch (_) {
       emit(SearchFailureState(message: 'Something went wrong'));
+    }
+  }
+
+  Future<void> addFavorite({required AddToFavoriteModel body}) async {
+    emit(AddFavoriteLoadingState());
+    try {
+      final response = await catRepository.addFavorite(body: body);
+      response.fold((error) => emit(AddFavoriteErrorState(error.message)), (
+        success,
+      ) {
+        emit(AddFavoriteSuccessState());
+      });
+    } on Exception catch (_) {
+      emit(AddFavoriteErrorState('Something went wrong'));
     }
   }
 }

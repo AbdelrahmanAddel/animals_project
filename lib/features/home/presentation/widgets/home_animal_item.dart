@@ -1,5 +1,8 @@
+import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/domain/entities/cat_entity.dart';
+import 'package:animal_task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:animal_task/core/constants/assets.dart';
 import 'package:animal_task/core/theme/app_colors.dart';
@@ -63,7 +66,14 @@ class HomeAnimalItem extends StatelessWidget {
             Spacer(),
             Align(
               alignment: Alignment.topRight,
-              child: SvgPicture.asset(images.svgHeart),
+              child: GestureDetector(
+                onTap: () async {
+                  await context.read<HomeCubit>().addFavorite(
+                    body: AddToFavoriteModel(id: cat.id, imageId: cat.imageId),
+                  );
+                },
+                child: SvgPicture.asset(images.svgHeart),
+              ),
             ),
           ],
         ),

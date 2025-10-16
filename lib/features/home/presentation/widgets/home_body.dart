@@ -1,3 +1,4 @@
+import 'package:animal_task/features/home/presentation/widgets/home_screen_bloc_listner.dart';
 import 'package:flutter/material.dart';
 import 'package:animal_task/features/home/presentation/widgets/home_header.dart';
 import 'package:animal_task/features/home/presentation/widgets/home_search.dart';
@@ -24,6 +25,7 @@ class HomeBody extends StatelessWidget {
               HomeCategory(),
               SizedBox(height: 23),
               AnimalsList(),
+              HomeBlocListener(),
             ],
           ),
         ),

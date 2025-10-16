@@ -1,9 +1,9 @@
-import 'package:animal_task/features/home/data/repositories/cat_repository_impl.dart';
+import 'package:animal_task/features/home/data/datasources/home_remote_data_source.dart';
+import 'package:animal_task/features/home/data/repositories/home_repository_impl.dart';
 import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
 import 'package:animal_task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 
-import '../../core/networking/cat_api_service.dart';
 import '../../core/networking/dio_factory.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,10 +15,10 @@ void setupServiceLocator() {
 }
 
 void _home(Dio dio) {
-  sl.registerLazySingleton(() => CatApiService(dio));
+  sl.registerLazySingleton(() => HomeApiService(dio));
 
-  sl.registerLazySingleton<CatRepository>(
-    () => CatRepositoryImpl(remoteDataSource: sl()),
+  sl.registerLazySingleton<HomeRepository>(
+    () => HomeRepositoryImpl(remoteDataSource: sl()),
   );
 
   sl.registerLazySingleton(() => HomeCubit(sl()));

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cat_remote_data_source.dart';
+part of 'home_remote_data_source.dart';
 
 // dart format off
 
@@ -10,8 +10,8 @@ part of 'cat_remote_data_source.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
-class _CatApiService implements CatApiService {
-  _CatApiService(this._dio, {this.baseUrl, this.errorLogger});
+class _HomeApiService implements HomeApiService {
+  _HomeApiService(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
 
@@ -54,6 +54,26 @@ class _CatApiService implements CatApiService {
       rethrow;
     }
     return _value;
+  }
+
+  @override
+  Future<void> addFavorite({required AddToFavoriteModel body}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<void>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/v1/favourites',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

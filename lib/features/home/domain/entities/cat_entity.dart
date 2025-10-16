@@ -8,6 +8,7 @@ class Cat {
   final String wikipediaUrl;
   final String referenceImageId;
   final String imageUrl;
+  final String imageId;
 
   Cat({
     required this.id,
@@ -19,5 +20,6 @@ class Cat {
     required this.wikipediaUrl,
     required this.referenceImageId,
     required this.imageUrl,
+    required this.imageId,
   });
 }

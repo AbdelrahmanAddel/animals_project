@@ -13,6 +13,7 @@ class CatMapper {
       wikipediaUrl: catModel.breeds?[0].wikipediaUrl ?? '',
       referenceImageId: catModel.breeds?[0].referenceImageId ?? '',
       imageUrl: catModel.url ?? '',
+      imageId: catModel.breeds?[0].referenceImageId ?? '',
     );
   }
 }

@@ -27,3 +27,12 @@ final class SearchFailureState extends HomeState {
 
   SearchFailureState({required this.message});
 }
+
+final class AddFavoriteLoadingState extends HomeState {}
+
+final class AddFavoriteSuccessState extends HomeState {}
+
+final class AddFavoriteErrorState extends HomeState {
+  final String message;
+  AddFavoriteErrorState(this.message);
+}
