@@ -33,4 +33,14 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
       return Left(HandledException.handle(e));
     }
   }
+
+  @override
+  Future<Either<AppException, void>> removeFavorite({required int id}) async {
+    try {
+      await apiService.removeFavorite(id: id);
+      return Right(null);
+    } catch (e) {
+      return Left(HandledException.handle(e));
+    }
+  }
 }

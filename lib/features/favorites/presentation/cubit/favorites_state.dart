@@ -17,3 +17,17 @@ final class FavoritesError extends FavoritesState {
 
   FavoritesError({required this.message});
 }
+
+final class FavoritesAddOrRemove extends FavoritesState {
+  final bool isAdded;
+
+  FavoritesAddOrRemove({required this.isAdded});
+}
+
+final class FavoritesAddOrRemoveLoading extends FavoritesState {}
+
+final class FavoritesAddOrRemoveError extends FavoritesState {
+  final String message;
+
+  FavoritesAddOrRemoveError({required this.message});
+}

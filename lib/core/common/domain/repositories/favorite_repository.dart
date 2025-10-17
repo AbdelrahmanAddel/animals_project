@@ -8,4 +8,5 @@ abstract class FavoriteRepository {
   Future<Either<AppException, void>> addFavorite({
     required AddToFavoriteModel body,
   });
+  Future<Either<AppException, void>> removeFavorite({required int id});
 }
