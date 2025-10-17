@@ -1,3 +1,4 @@
+import 'package:animal_task/features/favorites/presentation/screen/favorites_screen.dart';
 import 'package:animal_task/features/home/dependency_injection.dart';
 import 'package:animal_task/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class AnimalApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: FavoritesScreen(),
     );
   }
 }

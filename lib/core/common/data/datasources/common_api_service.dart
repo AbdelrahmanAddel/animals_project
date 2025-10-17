@@ -1,3 +1,4 @@
+import 'package:animal_task/core/common/data/model/favorites_model.dart';
 import 'package:animal_task/core/constants/api_endpoints.dart';
 import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/data/models/cat_model.dart';
@@ -11,7 +12,7 @@ abstract class CommonApiService {
   factory CommonApiService(Dio dio) = _CommonApiService;
 
   @GET(ApiEndpoints.favorites)
-  Future<List<CatModel>> getFavorites();
+  Future<List<FavoritesModel>> getFavorites();
 
   @POST(ApiEndpoints.favorites)
   Future<void> addFavorite({@Body() required AddToFavoriteModel body});

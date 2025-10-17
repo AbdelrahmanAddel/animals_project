@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:animal_task/core/theme/app_colors.dart';
 import 'package:animal_task/core/theme/app_text_style.dart';
 
-class HomeCategory extends StatefulWidget {
-  const HomeCategory({super.key});
+class AppTabBar extends StatefulWidget {
+  const AppTabBar({super.key});
 
   @override
-  State<HomeCategory> createState() => _HomeCategoryState();
+  State<AppTabBar> createState() => _AppTabBarState();
 }
 
-class _HomeCategoryState extends State<HomeCategory>
+class _AppTabBarState extends State<AppTabBar>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;
@@ -31,11 +31,7 @@ class _HomeCategoryState extends State<HomeCategory>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Categories',
-          style: AppTextStyle.poppins700Bold24.copyWith(fontSize: 20),
-        ),
-        SizedBox(height: 14),
+   
         TabBar(
           indicatorColor: Colors.white,
           tabAlignment: TabAlignment.start,

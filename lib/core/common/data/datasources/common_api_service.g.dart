@@ -20,12 +20,12 @@ class _CommonApiService implements CommonApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<CatModel>> getFavorites() async {
+  Future<List<FavoritesModel>> getFavorites() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CatModel>>(
+    final _options = _setStreamType<List<FavoritesModel>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -36,10 +36,12 @@ class _CommonApiService implements CommonApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<CatModel> _value;
+    late List<FavoritesModel> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => CatModel.fromJson(i as Map<String, dynamic>))
+          .map(
+            (dynamic i) => FavoritesModel.fromJson(i as Map<String, dynamic>),
+          )
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
