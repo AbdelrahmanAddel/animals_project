@@ -2,6 +2,7 @@ import 'package:animal_task/core/common/custom_app_button.dart';
 import 'package:animal_task/core/constants/assets.dart';
 import 'package:animal_task/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class OnboardingScreenBody extends StatelessWidget {
   const OnboardingScreenBody({super.key});
@@ -46,6 +47,22 @@ class OnboardingScreenBody extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(images.svgPetsFoot),
+                  SizedBox(width: 12),
+                  Text(
+                    'Get Started',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -9,6 +9,7 @@ class Cat {
   final String referenceImageId;
   final String imageUrl;
   final String imageId;
+  final String weight;
 
   Cat({
     required this.id,
@@ -21,5 +22,6 @@ class Cat {
     required this.referenceImageId,
     required this.imageUrl,
     required this.imageId,
+    required this.weight,
   });
 }
