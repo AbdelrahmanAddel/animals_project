@@ -59,7 +59,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       final response = await favoriteRepository.getFavorites();
       response.fold((error) => emit(HomeErrorState(error.message)), (success) {
-        _favoriteIds = success.map((fav) => fav.imageId).toList();
+        _favoriteIds = success.map((fav) => fav.imageId!).toList();
         emit(HomeSuccessState(_cats));
       });
     } on Exception catch (_) {
