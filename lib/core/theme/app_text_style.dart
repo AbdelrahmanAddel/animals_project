@@ -20,4 +20,10 @@ class AppTextStyle {
     fontSize: 14,
     color: AppColors.text,
   );
+  static TextStyle poppins600Medium22 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    fontSize: 22,
+    color: Colors.black,
+  );
 }

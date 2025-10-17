@@ -14,6 +14,7 @@ class CatMapper {
       referenceImageId: catModel.breeds?[0].referenceImageId ?? '',
       imageUrl: catModel.url ?? '',
       imageId: catModel.breeds?[0].referenceImageId ?? '',
+      weight: catModel.breeds?[0].weight?.metric ?? '',
     );
   }
 }
