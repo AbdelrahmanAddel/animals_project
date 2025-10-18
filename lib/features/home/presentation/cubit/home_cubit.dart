@@ -1,7 +1,7 @@
 import 'package:animal_task/core/common/domain/repositories/favorite_repository.dart';
 import 'package:animal_task/features/home/data/models/add_to_favourite_body.dart';
 import 'package:animal_task/features/home/domain/entities/cat_entity.dart';
-import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
+import 'package:animal_task/features/home/domain/repositories/home_repository.dart';
 import 'package:animal_task/features/home/presentation/cubit/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -4,7 +4,7 @@ import 'package:animal_task/core/common/domain/repositories/favorite_repository.
 import 'package:animal_task/features/favorites/presentation/cubit/favorites_cubit.dart';
 import 'package:animal_task/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:animal_task/features/home/data/repositories/home_repository_impl.dart';
-import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
+import 'package:animal_task/features/home/domain/repositories/home_repository.dart';
 import 'package:animal_task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 

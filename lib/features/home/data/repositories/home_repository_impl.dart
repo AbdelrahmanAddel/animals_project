@@ -3,7 +3,7 @@ import 'package:animal_task/core/error/handle_exception.dart';
 import 'package:animal_task/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:animal_task/features/home/data/mapper/cat_mapper.dart';
 import 'package:animal_task/features/home/domain/entities/cat_entity.dart';
-import 'package:animal_task/features/home/domain/repositories/cat_repository.dart';
+import 'package:animal_task/features/home/domain/repositories/home_repository.dart';
 import 'package:dartz/dartz.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
