@@ -9,6 +9,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   final FavoriteRepository favoriteRepositoryImpl;
   List<FavoritesModel> cats = [];
   Future<void> loadFavorites() async {
+    if (isClosed) return;
     emit(FavoritesLoading());
     try {
       final cats = await favoriteRepositoryImpl.getFavorites();
@@ -37,6 +38,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }
 
   Future<void> _addFavorite(AddToFavoriteModel body) async {
+    if (isClosed) return;
     try {
       final cats = await favoriteRepositoryImpl.addFavorite(body: body);
       cats.fold((error) => emit(FavoritesError(message: error.message)), (
@@ -51,6 +53,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   }
 
   Future<void> _removeFavorite(int id) async {
+    if (isClosed) return;
     try {
       final cats = await favoriteRepositoryImpl.removeFavorite(id: id);
       cats.fold((error) => emit(FavoritesError(message: error.message)), (

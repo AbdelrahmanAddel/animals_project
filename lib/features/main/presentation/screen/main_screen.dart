@@ -17,9 +17,10 @@ List<Widget> screens = [
   Placeholder(),
   Placeholder(),
 ];
-int screenIndex = 0;
 
 class _MainScreenState extends State<MainScreen> {
+  int screenIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +40,26 @@ class _MainScreenState extends State<MainScreen> {
         });
       },
       items: [
-        _bottomNavigationBarItem(currentIndex == 0, images.svgHomeIcon),
-        _bottomNavigationBarItem(currentIndex == 1, images.svgHeart),
-        _bottomNavigationBarItem(currentIndex == 2, images.svgMessagesIcon),
-        _bottomNavigationBarItem(currentIndex == 3, images.svgProfileIcon),
+        _bottomNavigationBarItem(
+          currentIndex == 0,
+          images.svgHomeIcon,
+          const Key('home'),
+        ),
+        _bottomNavigationBarItem(
+          currentIndex == 1,
+          images.svgHeart,
+          const Key('favorites'),
+        ),
+        _bottomNavigationBarItem(
+          currentIndex == 2,
+          images.svgMessagesIcon,
+          const Key('messages'),
+        ),
+        _bottomNavigationBarItem(
+          currentIndex == 3,
+          images.svgProfileIcon,
+          const Key('profile'),
+        ),
       ],
     );
   }
@@ -50,9 +67,11 @@ class _MainScreenState extends State<MainScreen> {
   BottomNavigationBarItem _bottomNavigationBarItem(
     bool isSelected,
     String iconPath,
+    Key? key,
   ) {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
+        key: key,
         iconPath,
         colorFilter: isSelected
             ? null
